@@ -1,0 +1,14 @@
+:root {
+    --main-color: #148110; 
+    --dark-color: #11152a;
+    --light-color: #d0d4ed;
+    --texts-c: #5e74ff;
+    --cancel-c: #ff6e6e;
+}
+
+p {
+    color: var(--texts-c);
+    font-weight: 100;
+    font-style: italic;
+    font-size: 15px;
+}
