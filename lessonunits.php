@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,7 +34,6 @@
 
         <li><a href="account2.php?q=1">
         <?php
-            session_start();
             if (!(isset($_SESSION['username']))) {
                 header("location:index.php");
             } else {
