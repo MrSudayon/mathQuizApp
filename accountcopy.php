@@ -1,3 +1,7 @@
+<?php
+session_start();
+include 'dbConnection.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,8 +36,7 @@
         <center><li><a href=""><img src="images/avatars.jpg" alt="avatar" style="height: 200px; width: 200px;" ></a></li></center>
         <li><a href="account2.php?q=1">
         <?php
-            include 'dbConnection.php';
-            session_start();
+        
             if (!(isset($_SESSION['username']))) {
                 header("location:index.php");
             } else {
