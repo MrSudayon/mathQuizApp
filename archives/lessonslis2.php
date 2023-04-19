@@ -104,7 +104,7 @@ while($row = mysqli_fetch_assoc($view_query)){
     border-bottom-right-radius: 10px;
     border-top-left-radius: 10px;
     height: 55px;
-    border-top-right-radius: 10px;''></i>Take Quiz</a>
+    border-top-right-radius: 10px;'></i>Take Quiz</a>
 
 <br>
 <br>

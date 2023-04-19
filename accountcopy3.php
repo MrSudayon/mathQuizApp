@@ -619,7 +619,7 @@ if (@$_GET['q'] == 3) {
 <?php 
 if (@$_GET['q'] == 4) {
     echo '<br>';
-   include 'lesson.php';
+    include 'lessons.php';
 
     echo '<br><br>';    
 }
