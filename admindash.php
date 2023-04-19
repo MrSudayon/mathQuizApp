@@ -1,4 +1,7 @@
-<?php session_start(); ?>
+<?php
+session_start(); 
+include 'dbConnection.php';
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -114,112 +117,7 @@ if (@$_GET['q'] == 0) {
         }
     }
 }
-
-
-
-#################################################################### ENABLE DISABLE #######################################################################
-if (@$_GET['q'] == 0) {  
-    $result = mysqli_query($con, "SELECT * FROM unit1ez ORDER BY date DESC") or die('Error');
-    echo '<div class="panel"><table class="table table-striped title1"  style="vertical-align:middle; width: 100%;">
-<tr><td style="vertical-align:middle; color: #000;"><b>#</b></td><td style="vertical-align:middle; color: #000"><b><i class="fa fa-user"></i> Name</b></td><td style="vertical-align:middle; color: #000;"><b> <i class="fa fa-question-circle"></i> Total question</b></td><td style="vertical-align:middle; color: #000;"><b><i class="fa fa-check-circle"></i> Marks</b></td><td style="vertical-align:middle; color: #000;"><b><i class="fa fa-clock-o"></i> Time limit</b></td><td style="vertical-align:middle; color: #000;"><b> <i class="fa fa-eye"></i> Status</b></td><td style="vertical-align:middle; color: #000;"><b><i class="fa fa-refresh"></i> Action</b></td></tr>';
-    $c = 1;
-    while ($row = mysqli_fetch_array($result)) {
-        $title   = $row['title'];
-        $total   = $row['total'];
-        $correct = $row['correct'];
-        $time    = $row['time'];
-        $eid     = $row['eid'];
-        $status  = $row['status'];
-        if ($status == "enabled") {
-            echo '<tr><td style="vertical-align:middle">' . $c++ . '</td><td style="vertical-align:middle">' . $title . '</td><td style="vertical-align:middle">' . $total . '</td><td style="vertical-align:middle">' . $correct * $total . '</td><td style="vertical-align:middle; padding: 10px;">' . $time . '&nbsp;min</td><td style="vertical-align:middle">Enabled</td>
-  <td style="vertical-align:middle"><b><a href="update2.php?deidquiz=' . $eid . '" class="btn logb" style="color:#FFFFFF;background:#e74c3c;font-size:12px;padding:5px; border-bottom-left-radius: 6px;border-bottom-right-radius:6px;border-top-left-radius: 6px;border-top-right-radius: 6px; padding: 10px;">&nbsp;<span><b>Disable</b></span></a></b></td></tr>';
-        } else {
-            echo '<tr><td style="vertical-align:middle">' . $c++ . '</td><td style="vertical-align:middle">' . $title . '</td><td style="vertical-align:middle">' . $total . '</td><td style="vertical-align:middle">' . $correct * $total . '</td><td style="vertical-align:middle: padding: 5px;">' . $time . '&nbsp;min</td><td style="vertical-align:middle">Disabled</td>
-  <td style="vertical-align:middle"><b><a href="update2.php?eeidquiz=' . $eid . '" class="btn logb" style="color:#FFFFFF;background:#007938;font-size:12px;padding:5px; border-bottom-left-radius: 6px;
-  border-bottom-right-radius:6px;
-  border-top-left-radius: 6px;
-  border-top-right-radius: 6px; padding: 10px;">&nbsp;<span><b>Enable</b></span></a></b></td></tr>';
-            
-        }
-    }
-}
-
-#################################################################### ENABLE DISABLE #######################################################################
-if (@$_GET['q'] == 0) {  
-    $result = mysqli_query($con, "SELECT * FROM unit3ez ORDER BY date DESC") or die('Error');
-    echo '<div class="panel"><table class="table table-striped title1"  style="vertical-align:middle; width: 100%;">
-<tr><td style="vertical-align:middle; color: #000;"><b>#</b></td><td style="vertical-align:middle; color: #000"><b><i class="fa fa-user"></i> Name</b></td><td style="vertical-align:middle; color: #000;"><b> <i class="fa fa-question-circle"></i> Total question</b></td><td style="vertical-align:middle; color: #000;"><b><i class="fa fa-check-circle"></i> Marks</b></td><td style="vertical-align:middle; color: #000;"><b><i class="fa fa-clock-o"></i> Time limit</b></td><td style="vertical-align:middle; color: #000;"><b> <i class="fa fa-eye"></i> Status</b></td><td style="vertical-align:middle; color: #000;"><b><i class="fa fa-refresh"></i> Action</b></td></tr>';
-    $c = 1;
-    while ($row = mysqli_fetch_array($result)) {
-        $title   = $row['title'];
-        $total   = $row['total'];
-        $correct = $row['correct'];
-        $time    = $row['time'];
-        $eid     = $row['eid'];
-        $status  = $row['status'];
-        if ($status == "enabled") {
-            echo '<tr><td style="vertical-align:middle">' . $c++ . '</td><td style="vertical-align:middle">' . $title . '</td><td style="vertical-align:middle">' . $total . '</td><td style="vertical-align:middle">' . $correct * $total . '</td><td style="vertical-align:middle; padding: 10px;">' . $time . '&nbsp;min</td><td style="vertical-align:middle">Enabled</td>
-  <td style="vertical-align:middle"><b><a href="update3.php?deidquiz=' . $eid . '" class="btn logb" style="color:#FFFFFF;background:#e74c3c;font-size:12px;padding:5px; border-bottom-left-radius: 6px;border-bottom-right-radius:6px;border-top-left-radius: 6px;border-top-right-radius: 6px; padding: 10px;">&nbsp;<span><b>Disable</b></span></a></b></td></tr>';
-        } else {
-            echo '<tr><td style="vertical-align:middle">' . $c++ . '</td><td style="vertical-align:middle">' . $title . '</td><td style="vertical-align:middle">' . $total . '</td><td style="vertical-align:middle">' . $correct * $total . '</td><td style="vertical-align:middle: padding: 5px;">' . $time . '&nbsp;min</td><td style="vertical-align:middle">Disabled</td>
-  <td style="vertical-align:middle"><b><a href="update3.php?eeidquiz=' . $eid . '" class="btn logb" style="color:#FFFFFF;background:#007938;font-size:12px;padding:5px; border-bottom-left-radius: 6px;
-  border-bottom-right-radius:6px;
-  border-top-left-radius: 6px;
-  border-top-right-radius: 6px; padding: 10px;">&nbsp;<span><b>Enable</b></span></a></b></td></tr>';
-            
-        }
-    }
-}
-
-
-#################################################################### ENABLE DISABLE #######################################################################
-if (@$_GET['q'] == 0) {  
-    $result = mysqli_query($con, "SELECT * FROM unit4ez ORDER BY date DESC") or die('Error');
-    echo '<div class="panel"><table class="table table-striped title1"  style="vertical-align:middle; width: 100%;">
-<tr><td style="vertical-align:middle; color: #000;"><b>#</b></td><td style="vertical-align:middle; color: #000"><b><i class="fa fa-user"></i> Name</b></td><td style="vertical-align:middle; color: #000;"><b> <i class="fa fa-question-circle"></i> Total question</b></td><td style="vertical-align:middle; color: #000;"><b><i class="fa fa-check-circle"></i> Marks</b></td><td style="vertical-align:middle; color: #000;"><b><i class="fa fa-clock-o"></i> Time limit</b></td><td style="vertical-align:middle; color: #000;"><b> <i class="fa fa-eye"></i> Status</b></td><td style="vertical-align:middle; color: #000;"><b><i class="fa fa-refresh"></i> Action</b></td></tr>';
-    $c = 1;
-    while ($row = mysqli_fetch_array($result)) {
-        $title   = $row['title'];
-        $total   = $row['total'];
-        $correct = $row['correct'];
-        $time    = $row['time'];
-        $eid     = $row['eid'];
-        $status  = $row['status'];
-        if ($status == "enabled") {
-            echo '<tr><td style="vertical-align:middle">' . $c++ . '</td><td style="vertical-align:middle">' . $title . '</td><td style="vertical-align:middle">' . $total . '</td><td style="vertical-align:middle">' . $correct * $total . '</td><td style="vertical-align:middle; padding: 10px;">' . $time . '&nbsp;min</td><td style="vertical-align:middle">Enabled</td>
-  <td style="vertical-align:middle"><b><a href="update4.php?deidquiz=' . $eid . '" class="btn logb" style="color:#FFFFFF;background:#e74c3c;font-size:12px;padding:5px; border-bottom-left-radius: 6px;border-bottom-right-radius:6px;border-top-left-radius: 6px;border-top-right-radius: 6px; padding: 10px;">&nbsp;<span><b>Disable</b></span></a></b></td></tr>';
-        } else {
-            echo '<tr><td style="vertical-align:middle">' . $c++ . '</td><td style="vertical-align:middle">' . $title . '</td><td style="vertical-align:middle">' . $total . '</td><td style="vertical-align:middle">' . $correct * $total . '</td><td style="vertical-align:middle: padding: 5px;">' . $time . '&nbsp;min</td><td style="vertical-align:middle">Disabled</td>
-  <td style="vertical-align:middle"><b><a href="update4.php?eeidquiz=' . $eid . '" class="btn logb" style="color:#FFFFFF;background:#007938;font-size:12px;padding:5px; border-bottom-left-radius: 6px;
-  border-bottom-right-radius:6px;
-  border-top-left-radius: 6px;
-  border-top-right-radius: 6px; padding: 10px;">&nbsp;<span><b>Enable</b></span></a></b></td></tr>';
-            
-        }
-    }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+//While loop insert before
 
 #################################################################################### REMOVE QUIZ #######################################################################
 if (@$_GET['q'] == 5) {
