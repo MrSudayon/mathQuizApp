@@ -64,7 +64,7 @@
         <div class="boxas">
             <p class="title-content"></p>
             <p class="title-content-head-2">
-                <a href="lessonslist.php?lType=1" style="color: white; font-weight: bold; font-size: 18px;"><i class="fa-sharp fa-solid fa-square-check fa-fw"></i>&nbsp;UNIT 1 LESSON</a></p>
+                <a href="lessonslist.php" style="color: white; font-weight: bold; font-size: 18px;"><i class="fa-sharp fa-solid fa-square-check fa-fw"></i>&nbsp;UNIT 1 QUIZ</a></p>
      </div>
 
      <br>
@@ -73,7 +73,7 @@
         <div class="boxas">
             <p class="title-content"></p>
             <p class="title-content-head-2">
-                <a href="lessonslist.php?lType=2" style="color: white; font-weight: bold; font-size: 18px;"><i class="a-sharp fa-solid fa-square-check fa-fw"></i>&nbsp;UNIT 2 LESSON</a></p>
+                <a href="lessonslis2.php" style="color: white; font-weight: bold; font-size: 18px;"><i class="a-sharp fa-solid fa-square-check fa-fw"></i>&nbsp;UNIT 2 QUIZ</a></p>
      </div>
 
 <br>
@@ -81,7 +81,7 @@
         <div class="boxas">
             <p class="title-content"></p>
             <p class="title-content-head-2">
-                <a href="lessonslist.php?lType=3" style="color: white; font-weight: bold; font-size: 18px;"><i class="a-sharp fa-solid fa-square-check fa-fw"></i>&nbsp;UNIT 3 LESSON</a>
+                <a href="lessonslist3.php" style="color: white; font-weight: bold; font-size: 18px;"><i class="a-sharp fa-solid fa-square-check fa-fw"></i>&nbsp;UNIT 3 QUIZ</a>
               </p>
      </div>
 <br>
@@ -90,7 +90,7 @@
         <div class="boxas">
             <p class="title-content"></p>
             <p class="title-content-head-2">
-                <a href="lessonslist.php?lType=4" style="color: white; font-weight: bold; font-size: 18px;"><i class="a-sharp fa-solid fa-square-check fa-fw"></i>&nbsp;UNIT 4 LESSON</a>
+                <a href="lessonslist4.php" style="color: white; font-weight: bold; font-size: 18px;"><i class="a-sharp fa-solid fa-square-check fa-fw"></i>&nbsp;UNIT 4 QUIZ</a>
               </p>
      </div>
 
