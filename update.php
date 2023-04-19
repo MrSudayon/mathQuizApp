@@ -1,7 +1,8 @@
 <?php
-include_once 'dbConnection.php';
+include 'dbConnection.php';
 
 session_start();
+
 $username = $_SESSION['username'];
 if (isset($_SESSION['key'])) {
     if (@$_GET['fdid'] && $_SESSION['key'] == '54585c506829293a2d4c3b68543b316e2e7a2d277858545a36362e5f39') {
@@ -250,7 +251,7 @@ if (@$_GET['q'] == 'quiz' && @$_GET['step'] == 2 && isset($_SESSION['6e447159425
                         $q = mysqli_query($con, "UPDATE `rank` SET `score`=$sun ,time=NOW() WHERE username= '$username'") or die('Error174');
                     }
                 }
-            header('location:account.php?q=result&eid=' . $_GET[eid]);
+            header('location:account.php?q=result&eid=' . $_GET['eid']);
         }
     } else {
         unset($_SESSION['6e447159425d2d']);
@@ -275,7 +276,7 @@ if (@$_GET['q'] == 'quiz' && @$_GET['step'] == 2 && isset($_SESSION['6e447159425
                         $q = mysqli_query($con, "UPDATE `rank` SET `score`=$sun ,time=NOW() WHERE username= '$username'") or die('Error174');
                     }
                 }
-            header('location:account.php?q=result&eid=' . $_GET[eid]);
+            header('location:account.php?q=result&eid=' . $_GET['eid']);
     }
 }
 
@@ -341,7 +342,7 @@ if (@$_GET['q'] == 'quiz' && @$_GET['step'] == 2 && isset($_SESSION['6e447159425
                 $s = $s + $wrong;
                 $q = mysqli_query($con, "UPDATE `history` SET `score`=$s,`level`=$sn,`wrong`=$w, date= NOW()  WHERE  username = '$username' AND eid = '$eid'") or die('Error11');
             }
-            header('location:account.php?q=quiz&step=2&eid=' . $_GET[eid] . '&n=' . $_GET[n] . '&t=' . $total);
+            header('location:account.php?q=quiz&step=2&eid=' . $_GET['eid'] . '&n=' . $_GET['n'] . '&t=' . $total);
             
         } else {
             unset($_SESSION['6e447159425d2d']);
@@ -366,7 +367,7 @@ if (@$_GET['q'] == 'quiz' && @$_GET['step'] == 2 && isset($_SESSION['6e447159425
                         $q = mysqli_query($con, "UPDATE `rank` SET `score`=$sun ,time=NOW() WHERE username= '$username'") or die('Error174');
                     }
                 }
-            header('location:account.php?q=result&eid=' . $_GET[eid]);
+            header('location:account.php?q=result&eid=' . $_GET['eid']);
         }
     } else {
         unset($_SESSION['6e447159425d2d']);
@@ -391,7 +392,7 @@ if (@$_GET['q'] == 'quiz' && @$_GET['step'] == 2 && isset($_SESSION['6e447159425
                         $q = mysqli_query($con, "UPDATE `rank` SET `score`=$sun ,time=NOW() WHERE username= '$username'") or die('Error174');
                     }
                 }
-            header('location:account.php?q=result&eid=' . $_GET[eid]);
+            header('location:account.php?q=result&eid=' . $_GET['eid']);
     }
 }
 ?>

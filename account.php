@@ -48,9 +48,9 @@
             }
         ?>
         </a></li>
-        
         <li><a href="account2.php">Home</a></li>
-        <li><a href="lessonunits.php">Lesson & Quiz</a></li>
+        <li><a href="lessonunits.php">Lessons</a></li>
+        <li><a href="quizunits.php">Quizzes</a></li>
         <li><a href="about.php">About</a></li>
         <li><a href="account.php?q=3">student rankings</a></li>
         <li><a href="logout.php?q=account.php">log out</a></li>

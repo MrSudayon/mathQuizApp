@@ -13,7 +13,7 @@
   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-  <title>Document</title>
+  <title>Lessons</title>
 
 
 </head>
@@ -22,7 +22,7 @@
 
 
 <div class="page">
-  <header tabindex="0">Dashboard</header>
+  <header tabindex="0">Lesson Units</header>
   <div id="nav-container">
     <div class="bg"></div>
     <div class="button" tabindex="0">
@@ -48,7 +48,7 @@
         </a></li>
         <li><a href="account2.php">Home</a></li>
         <li><a href="lessonunits.php">Lessons</a></li>
-        <li><a href="lessonunits.php">Quizzes</a></li>
+        <li><a href="quizunits.php">Quizzes</a></li>
         <li><a href="about.php">About</a></li>
         <li><a href="account.php?q=3">student rankings</a></li>
         <li><a href="logout.php?q=account.php">log out</a></li>

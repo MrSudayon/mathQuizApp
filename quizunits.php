@@ -13,7 +13,7 @@
   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-  <title>Document</title>
+  <title>Quizzes</title>
 
 
 </head>
@@ -22,7 +22,7 @@
 
 
 <div class="page">
-  <header tabindex="0">Dashboard</header>
+  <header tabindex="0">Quiz Units</header>
   <div id="nav-container">
     <div class="bg"></div>
     <div class="button" tabindex="0">
@@ -64,7 +64,7 @@
         <div class="boxas">
             <p class="title-content"></p>
             <p class="title-content-head-2">
-                <a href="lessonslist.php" style="color: white; font-weight: bold; font-size: 18px;"><i class="fa-sharp fa-solid fa-square-check fa-fw"></i>&nbsp;UNIT 1 QUIZ</a></p>
+                <a href="account.php?q=1" style="color: white; font-weight: bold; font-size: 18px;"><i class="fa-sharp fa-solid fa-square-check fa-fw"></i>&nbsp;UNIT 1 QUIZ</a></p>
      </div>
 
      <br>
@@ -73,7 +73,7 @@
         <div class="boxas">
             <p class="title-content"></p>
             <p class="title-content-head-2">
-                <a href="lessonslis2.php" style="color: white; font-weight: bold; font-size: 18px;"><i class="a-sharp fa-solid fa-square-check fa-fw"></i>&nbsp;UNIT 2 QUIZ</a></p>
+                <a href="accountcopy.php?q=1" style="color: white; font-weight: bold; font-size: 18px;"><i class="a-sharp fa-solid fa-square-check fa-fw"></i>&nbsp;UNIT 2 QUIZ</a></p>
      </div>
 
 <br>
@@ -81,7 +81,7 @@
         <div class="boxas">
             <p class="title-content"></p>
             <p class="title-content-head-2">
-                <a href="lessonslist3.php" style="color: white; font-weight: bold; font-size: 18px;"><i class="a-sharp fa-solid fa-square-check fa-fw"></i>&nbsp;UNIT 3 QUIZ</a>
+                <a href="accountcopy3.php?q=1" style="color: white; font-weight: bold; font-size: 18px;"><i class="a-sharp fa-solid fa-square-check fa-fw"></i>&nbsp;UNIT 3 QUIZ</a>
               </p>
      </div>
 <br>
@@ -90,7 +90,7 @@
         <div class="boxas">
             <p class="title-content"></p>
             <p class="title-content-head-2">
-                <a href="lessonslist4.php" style="color: white; font-weight: bold; font-size: 18px;"><i class="a-sharp fa-solid fa-square-check fa-fw"></i>&nbsp;UNIT 4 QUIZ</a>
+                <a href="accountcopy4.php?q=1" style="color: white; font-weight: bold; font-size: 18px;"><i class="a-sharp fa-solid fa-square-check fa-fw"></i>&nbsp;UNIT 4 QUIZ</a>
               </p>
      </div>
 

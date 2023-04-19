@@ -116,9 +116,8 @@ if (@$_GET['q'] == 0) {
     }
 }
 
-
-
-#################################################################### ENABLE DISABLE #######################################################################
+#################################################################### EXCESS #######################################################################
+/**
 if (@$_GET['q'] == 0) {  
     $result = mysqli_query($con, "SELECT * FROM unit1ez ORDER BY date DESC") or die('Error');
     echo '<div class="panel"><table class="table table-striped title1"  style="vertical-align:middle; width: 100%;">
@@ -199,12 +198,7 @@ if (@$_GET['q'] == 0) {
         }
     }
 }
-
-
-
-
-
-
+*/
 
 
 
@@ -296,14 +290,6 @@ if (@$_GET['q'] == 5) {
 
 
 
-
-
-
-
-
-
-
-
 if (@$_GET['q'] == 2) {
     if(isset($_GET['show'])){
         $show = $_GET['show'];
@@ -383,23 +369,6 @@ if (@$_GET['q'] == 2) {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 if (@$_GET['q'] == 1) {
     
     $result = mysqli_query($con, "SELECT * FROM user") or die('Error');
@@ -421,36 +390,6 @@ if (@$_GET['q'] == 1) {
     echo '</table></div>';
     
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -484,28 +423,6 @@ if (@$_GET['q'] == 3) {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 if (@$_GET['fid']) {
     echo '<br />';
     $id = @$_GET['fid'];
@@ -532,24 +449,7 @@ if (@$_GET['fid']) {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            ############################################################################# ADDING LESSON PUTEK ##############################################################################################
+            ############################################################################# ADDING QUIZ PUTEK ##############################################################################################
 if (@$_GET['q'] == 4 && !(@$_GET['step'])) {
     echo ' 
 
@@ -557,7 +457,8 @@ if (@$_GET['q'] == 4 && !(@$_GET['step'])) {
     <div class="">
     <div class="row">
     <span class="title1" style="font-size:30px;"><b>Enter Quiz Details<p style="background-color: #F0A500; color: white; ">UNIT 1</p></h5></b></span><br /><br />
-     <div class="col-md-3"></div><div class="col-md-6">   <form class="form-horizontal title1" name="form" action="update.php?q=addquiz"  method="POST">
+     <div class="col-md-3"></div><div class="col-md-6">
+    <form class="form-horizontal title1" name="form" action="update.php?q=addquiz"  method="POST">
     <fieldset>
     <div class="form-group">
       <label class="col-md-12 control-label" for="name"></label>  
@@ -593,7 +494,7 @@ if (@$_GET['q'] == 4 && !(@$_GET['step'])) {
     <div class="form-group">
       <label class="col-md-12 control-label" for=""></label>
       <div class="col-md-12"> 
-        <input  type="submit" style="text-align:center;  background-color: #125C13; /* Green */
+        <input type="submit" style="text-align:center;  background-color: #125C13; /* Green */
         border: none;
         color: white;
         padding: 15px 32px;

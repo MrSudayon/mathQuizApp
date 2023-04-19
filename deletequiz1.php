@@ -19,7 +19,7 @@
 <?php 
 
 include_once 'dbConnection.php';
-echo '<a href="https://mathlearners.online/dash.php" style="color: green;">Back</a>';
+echo '<a href="dash.php" style="color: green;">Back</a>';
 
 
 

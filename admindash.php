@@ -1,4 +1,5 @@
-<!DOCTYPE html PUBLIC>
+<?php session_start(); ?>
+<!DOCTYPE html>
 <html>
 <head>
 <link rel="icon" href="favicon.ico" type="image/icon" sizes="16x16">
@@ -26,7 +27,7 @@
           
             <?php
                 include_once 'dbConnection.php';
-                session_start();
+                
                 if (!(isset($_SESSION['username']))  || ($_SESSION['key']) != '54585c506829293a2d4c3b68543b316e2e7a2d277858545a36362e5f39') {
                     session_destroy();
                     header("location:index.php");
