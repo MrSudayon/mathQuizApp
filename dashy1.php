@@ -1,3 +1,7 @@
+<?php
+include 'dbConnection.php';
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,8 +27,7 @@
           <li class="menu-text" style="color:white;">
           
             <?php
-                include_once 'dbConnection.php';
-                session_start();
+                
                 if (!(isset($_SESSION['username']))  || ($_SESSION['key']) != '54585c506829293a2d4c3b68543b316e2e7a2d277858545a36362e5f39') {
                     session_destroy();
                     header("location:index.php");

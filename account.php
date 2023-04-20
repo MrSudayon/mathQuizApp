@@ -1,6 +1,6 @@
 <?php
-session_start(); 
 include 'dbConnection.php';
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -35,13 +35,12 @@ include 'dbConnection.php';
         <center><li><a href=""><img src="images/avatars.jpg" alt="avatar" style="height: 200px; width: 200px;" ></a></li></center>
         <li><a href="account2.php?q=1">
         <?php
-            include 'dbConnection.php';
-            
-            if (!(isset($_SESSION['username']))) {
-                header("location:index.php");
+            $username = $_SESSION['username'];
+            if (!(isset($username))) {
+                session_destroy();
             } else {
                 $name     = $_SESSION['name'];
-                $username = $_SESSION['username'];
+                $usern = $username;
 
                 echo '<br><span>
                 <span style="color:#007938;">
@@ -82,7 +81,7 @@ if (@$_GET['q'] == 1) {
     </tr>';
 
     $c = 1;
-    $username = $_SESSION['username'];
+    
     while ($row = mysqli_fetch_array($result)) {
        
         $title   = $row['title'];
@@ -146,18 +145,18 @@ if (@$_GET['q'] == 1) {
 <?php
 if (@$_GET['q'] == 'quiz' && @$_GET['step'] == 2 && isset($_SESSION['6e447159425d2d']) && $_SESSION['6e447159425d2d'] == "6e447159425d2d" && isset($_GET['endquiz'])== 'end') {
     unset($_SESSION['6e447159425d2d']);
-        $q1 = mysqli_query($con, "UPDATE history SET status='finished' WHERE username='$_SESSION[username]' AND eid='$_GET[eid]' ") or die('Error197');
+        $q = mysqli_query($con, "UPDATE history SET status='finished' WHERE username='$_SESSION[username]' AND eid='$_GET[eid]' ") or die('Error197');
         $q = mysqli_query($con, "SELECT * FROM history WHERE eid='$_GET[eid]' AND username='$_SESSION[username]'") or die('Error156');
                 while ($row = mysqli_fetch_array($q)) {
                     $s = $row['score'];
                     $scorestatus = $row['score_updated'];
                 }
                  if($scorestatus=="false"){
-                    $q2 = mysqli_query($con, "UPDATE history SET score_updated='true' WHERE username='$_SESSION[username]' AND eid='$_GET[eid]' ") or die('Error197');
+                    $q = mysqli_query($con, "UPDATE history SET score_updated='true' WHERE username='$_SESSION[username]' AND eid='$_GET[eid]' ") or die('Error197');
                     $q = mysqli_query($con, "SELECT * FROM rank WHERE username='$username'") or die('Error161');
                     $rowcount = mysqli_num_rows($q);
                     if ($rowcount == 0) {
-                        $q2 = mysqli_query($con, "INSERT INTO rank VALUES(NULL,'$username','$s',NOW())") or die('Error165');
+                        $q = mysqli_query($con, "INSERT INTO rank VALUES(NULL,'$username','$s',NOW())") or die('Error165');
                     } else {
                         while ($row = mysqli_fetch_array($q)) {
                             $sun = $row['score'];
@@ -253,7 +252,7 @@ if (@$_GET['q'] == 'quiz' && @$_GET['step'] == 2 && isset($_SESSION['6e447159425
             var seconds = ' . $remaining . ' ;
                             
                 function end(){{
-                    window.location ="account.php?q=quiz&step=2&eid=' . $_GET["eid"] . '&n=' . $_GET["n"] . '&t=' . isset($_GET["total"]) . '&endquiz=end";
+                    window.location ="account.php?q=quiz&step=2&eid=' . $_GET["eid"] . '&n=' . $_GET["n"] . '&endquiz=end";
                 }
                 }
 
@@ -275,7 +274,7 @@ if (@$_GET['q'] == 'quiz' && @$_GET['step'] == 2 && isset($_SESSION['6e447159425
                     if (seconds <= 0) {
                         clearInterval(countdownTimer);
                         document.getElementById(\'countdown\').innerHTML = "Close Quiz";
-                        window.location ="account.php?q=quiz&step=2&eid=' . $_GET["eid"] . '&n=' . $_GET["n"] . '&t=' . isset($_GET["total"]) . '&endquiz=end";
+                        window.location ="account.php?q=quiz&step=2&eid=' . $_GET["eid"] . '&n=' . $_GET["n"] . '&endquiz=end";
                     } else {    
                         seconds--;
                     }
@@ -415,6 +414,7 @@ if (@$_GET['q'] == 'quiz' && @$_GET['step'] == 2 && isset($_SESSION['6e447159425
             header('location:account.php?q=result&eid=' . $_GET['eid']);
     }
 }
+
 if (@$_GET['q'] == 'result' && @$_GET['eid']) {
     $eid = @$_GET['eid'];
     $q = mysqli_query($con, "SELECT * FROM quiz WHERE eid='$eid' ") or die('Error157');
@@ -655,10 +655,7 @@ if (@$_GET['q'] == 4) {
     echo '<br><br>';    
 }
 
-
-
 ?>
-
 
 
 </div>

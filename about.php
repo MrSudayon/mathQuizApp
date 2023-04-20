@@ -1,6 +1,7 @@
 <?php
-include 'dbConnection.php';
 session_start();
+include 'dbConnection.php';
+$sess_user = $_SESSION['username'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,9 +28,10 @@ session_start();
       <center><li><a href=""><img src="images/avatars.jpg" alt="avatar" style="height: 200px; width: 200px;" ></a></li></center>
         <li><a href="account2.php?q=1">
         <?php
-            
-            if (!(isset($_SESSION['username']))) {
-                header("location:index.php");
+
+
+            if (!(isset($sess_user))) {
+                session_destroy();
             } else {
                 $name     = $_SESSION['name'];
                 $username = $_SESSION['username'];

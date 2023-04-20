@@ -1,6 +1,6 @@
 <?php
-session_start();
 include 'dbConnection.php';
+session_start();
 ?>
 
 <!DOCTYPE html PUBLIC>
@@ -94,14 +94,14 @@ include 'dbConnection.php';
 <?php
 if (@$_GET['q'] == 4 && (@$_GET['step']) == 2) {
 
-    $qUnit = @$_GET['qUnit'];
+    $qUnit = @$_GET['unit'];
     $n = @$_GET['n'];
     $eid = @$_GET['eid'];
     echo ' 
 
     <div class="">
     <span class="title1" style="font-size:30px;"><b>Enter Question Details <p style="background-color: #F0A500; color: white; ">Quiz Unit '. $qUnit .'</p></b></span><br /><br />
-     <div class="col-md-3"></div><div class="col-md-6"><form class="form-horizontal title1" name="form" action="update.php?q=addqns&n=' . $n . '&eid=' . $eid . '&ch=4 "  method="POST">
+     <div class="col-md-3"></div><div class="col-md-6"><form class="form-horizontal title1" name="form" action="update.php?q=addqns&n=' . $n . '&eid='. $eid .'&ch=4" method="POST">
     <fieldset>
     </div>
 

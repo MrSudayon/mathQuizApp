@@ -92,7 +92,7 @@ echo '
                   <div class="">
                   <div class="row">
                   <span class="title1" style="font-size:30px;"><b>Enter Quiz Details <p style="background-color: #09009B; color: white; border-radius: 10px;"> Quiz Unit '. $Qunit .'</p></h5></b></span><br /><br />
-                   <div class="col-md-3"></div><div class="col-md-6">   <form class="form-horizontal title1" name="form" action="update.php?q=addquiz&qUnit='.$Qunit.'"  method="POST">
+                   <div class="col-md-3"></div><div class="col-md-6">   <form class="form-horizontal title1" name="form" action="update.php?q=addquiz&qUnit='.$Qunit.'" method="POST">
                   <fieldset>
                   <div class="form-group">
                     <label class="col-md-12 control-label" for="name"></label>  

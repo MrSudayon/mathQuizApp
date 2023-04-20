@@ -1,8 +1,8 @@
 <?php
+session_start();
 include 'dbConnection.php';
 
-session_start();
-
+$quizUnit = @$_GET['unit'];
 $username = $_SESSION['username'];
 if (isset($_SESSION['key'])) {
     if (@$_GET['fdid'] && $_SESSION['key'] == '54585c506829293a2d4c3b68543b316e2e7a2d277858545a36362e5f39') {
@@ -76,13 +76,13 @@ if (isset($_SESSION['key'])) {
         $name    = ucwords(strtolower($name));
         $total   = $_POST['total'];
         $correct = $_POST['right'];
-        $wrong   = $_POST['wrong'];
         $time    = $_POST['time'];
         $status  = "disabled";
         $quizUnit = @$_GET['qUnit'];
         $id      = uniqid();
-        $q3      = mysqli_query($con, "INSERT INTO quiz VALUES(NULL,'$id','$name','$correct','$wrong','$total','$time', NOW(),'$status','$quizUnit')");
-        header("location:addQuiz.php?q=4&step=2&eid=$id&n=$total");
+        $q3= mysqli_query($con, "INSERT INTO quiz VALUES(null,'$id','$name','$correct','0','$total','$time', NOW(),'$status','$quizUnit')");
+        
+        header("location:addQuiz.php?q=4&step=2&eid=$id&n=$total&unit=$quizUnit");
     }
 }
 if (isset($_SESSION['key'])) {

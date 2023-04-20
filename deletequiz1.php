@@ -1,3 +1,6 @@
+<?php
+include 'dbConnection.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,7 +21,6 @@
 <body>
 <?php 
 
-include 'dbConnection.php';
 echo '<a href="dash.php?q=5" style="color: green;">Back</a>';
 
 $QUnit = @$_GET['unit'];
