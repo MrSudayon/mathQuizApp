@@ -23,7 +23,7 @@ echo '<a href="dash.php?q=5" style="color: green;">Back</a>';
 
 $QUnit = @$_GET['unit'];
 
-    $result = mysqli_query($con, "SELECT * FROM quiz WHERE status='enabled' AND quizUnit='$QUnit' ORDER BY date DESC") or die('Error');
+    $result = mysqli_query($con, "SELECT * FROM quiz WHERE quizUnit='$QUnit' ORDER BY date DESC") or die('Error');
     echo '<br><div class="panel">
     <table class="" style"width: 100%;";>
     <tr>

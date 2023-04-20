@@ -1,4 +1,7 @@
-<?php session_start(); ?>
+<?php
+session_start(); 
+include 'dbConnection.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,8 +22,6 @@
 
 </head>
 <body>
-<?php include 'dbConnection.php'; ?>
-
 
 <div class="page">
   <header tabindex="0">Dashboard</header>
@@ -145,14 +146,14 @@ if (@$_GET['q'] == 1) {
 <?php
 if (@$_GET['q'] == 'quiz' && @$_GET['step'] == 2 && isset($_SESSION['6e447159425d2d']) && $_SESSION['6e447159425d2d'] == "6e447159425d2d" && isset($_GET['endquiz'])== 'end') {
     unset($_SESSION['6e447159425d2d']);
-    $q = mysqli_query($con, "UPDATE history SET status='finished' WHERE username='$_SESSION[username]' AND eid='$_GET[eid]' ") or die('Error197');
+        $q1 = mysqli_query($con, "UPDATE history SET status='finished' WHERE username='$_SESSION[username]' AND eid='$_GET[eid]' ") or die('Error197');
         $q = mysqli_query($con, "SELECT * FROM history WHERE eid='$_GET[eid]' AND username='$_SESSION[username]'") or die('Error156');
                 while ($row = mysqli_fetch_array($q)) {
                     $s = $row['score'];
                     $scorestatus = $row['score_updated'];
                 }
                  if($scorestatus=="false"){
-                    $q = mysqli_query($con, "UPDATE history SET score_updated='true' WHERE username='$_SESSION[username]' AND eid='$_GET[eid]' ") or die('Error197');
+                    $q2 = mysqli_query($con, "UPDATE history SET score_updated='true' WHERE username='$_SESSION[username]' AND eid='$_GET[eid]' ") or die('Error197');
                     $q = mysqli_query($con, "SELECT * FROM rank WHERE username='$username'") or die('Error161');
                     $rowcount = mysqli_num_rows($q);
                     if ($rowcount == 0) {
@@ -298,16 +299,16 @@ if (@$_GET['q'] == 'quiz' && @$_GET['step'] == 2 && isset($_SESSION['6e447159425
             echo '<br>'; $eid   = @$_GET['eid'];
             $sn    = @$_GET['n'];
             $total = @$_GET['t'];
-            $q     = mysqli_query($con, "SELECT * FROM questions WHERE eid='$eid' AND sn='$sn' ");
+            $q = mysqli_query($con, "SELECT * FROM questions WHERE eid='$eid' AND sn='$sn' ");
             echo '<div class="panel" style="margin-right:5%;margin-left:5%;margin-top:10px;border-radius:10px">';
             while ($row = mysqli_fetch_array($q)) {
                 $qns = stripslashes($row['qns']);
                 $qid = $row['qid'];
                 echo '<b><pre style="background-color:white"><div style="font-size:20px;font-weight:bold;font-family:calibri;margin:10px">' . $sn . ' : ' . $qns . '</div></pre></b>';
             }
-            
-            echo '<form id="qform" action="update.php?q=quiz&step=2&eid=' . $eid . '&n=' . $sn . '&t=' . $total . '&qid=' . $qid . '" method="POST"  class="form-horizontal"><br />';
 
+            echo '<form id="qform" action="update.php?q=quiz&step=2&eid=' . $eid . '&n=' . $sn . '&t=' . $total . '&qid=' . $qid . '" method="POST"  class="form-horizontal"><br />';
+            
             $q = mysqli_query($con, "SELECT * FROM user_answer WHERE qid='$qid' AND username='$_SESSION[username]' AND eid='$_GET[eid]'") or die("Error222");
             if (mysqli_num_rows($q) > 0) {
                 $row = mysqli_fetch_array($q);
@@ -315,6 +316,7 @@ if (@$_GET['q'] == 'quiz' && @$_GET['step'] == 2 && isset($_SESSION['6e447159425
                 $q = mysqli_query($con, "SELECT * FROM options WHERE qid='$qid' AND optionid='$ans'") or die("Error222");
                 $row = mysqli_fetch_array($q);
                 $ans = $row['option'];
+            
             } else {
                 $ans = "";
             }
@@ -330,9 +332,9 @@ if (@$_GET['q'] == 'quiz' && @$_GET['step'] == 2 && isset($_SESSION['6e447159425
             }
             echo '</div>';
             if ($_GET["t"] > $_GET["n"] && $_GET["n"] != 1) {###### RESET BUTTON  CSS BUTTON DIN########## 
-                echo '<br /><a href="account.php?q=quiz&step=2&eid=' . $eid . '&n=' . ($sn - 1) . '&t=' . $total . '" class="btn btn-primary" style="height:30px"></a><button type="submit" class="btn btn-default" disabled="true" id="sbutton" style="font-size:16px;color: white; background-color: #0561e1; padding: 10px; border-radius: 8px; width: 100px; margin-right: 15px;"><span class="glyphicon glyphicon-lock" style="font-size:16px" aria-hidden="true"></span><font style="font-size:12px;font-weight:bold">Confirm</font></button>&nbsp;&nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-default" onclick="frmreset()" style="height:30px"></span><font style="font-size:12px;font-weight:bold">Reset</font></button>&nbsp;&nbsp;&nbsp;&nbsp;<a href="account.php?q=quiz&step=2&eid=' . $eid . '&n=' . ($sn + 1) . '&t=' . $total . '" class="btn btn-primary" style="height:30px"><span class="glyphicon glyphicon-arrow-right" aria-hidden="true"  style="font-size:12px"></span></a></form><br><br>';
+                echo '<br /><a href="account.php?q=quiz&step=2&eid=' . $eid . '&n=' . ($sn + 1) . '&t=' . $total . '" class="btn btn-primary" style="height:30px"></a><button type="submit" class="btn btn-default" disabled="true" id="sbutton" style="font-size:16px;color: white; background-color: #0561e1; padding: 10px; border-radius: 8px; width: 100px; margin-right: 15px;"><span class="glyphicon glyphicon-lock" style="font-size:16px" aria-hidden="true"></span><font style="font-size:12px;font-weight:bold">Confirm</font></button>&nbsp;&nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-default" onclick="frmreset()" style="height:30px"></span><font style="font-size:12px;font-weight:bold">Reset</font></button>&nbsp;&nbsp;&nbsp;&nbsp;<a href="account.php?q=quiz&step=2&eid=' . $eid . '&n=' . ($sn + 1) . '&t=' . $total . '" class="btn btn-primary" style="height:30px"><span class="glyphicon glyphicon-arrow-right" aria-hidden="true"  style="font-size:12px"></span></a></form><br><br>';
             } else if ($_GET["t"] == $_GET["n"]) {
-                echo '<br /><a href="account.php?q=quiz&step=2&eid=' . $eid . '&n=' . ($sn - 1) . '&t=' . $total . '" class="btn btn-primary" style="height:30px"></a><button type="submit" class="btn btn-default" disabled="true" id="sbutton" style="height:30px"><span class="glyphicon glyphicon-lock" style="font-size:16px" aria-hidden="true"></span><font style="font-size:12px;font-weight:bold; background-color: #0561e1; padding: 10px; color: white; border-radius: 10px;">Select Final Answer</font></button>&nbsp;&nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-default" onclick="frmreset()" style="height:30px"></span><font style="font-size:12px;font-weight:bold"></font></button>&nbsp;&nbsp;&nbsp;&nbsp;</form><br><br>';
+                echo '<br /><a href="account.php?q=quiz&step=2&eid=' . $eid . '&n=' . ($sn + 1) . '&t=' . $total . '" class="btn btn-primary" style="height:30px"></a><button type="submit" class="btn btn-default" disabled="true" id="sbutton" style="height:30px"><span class="glyphicon glyphicon-lock" style="font-size:16px" aria-hidden="true"></span><font style="font-size:12px;font-weight:bold; background-color: #0561e1; padding: 10px; color: white; border-radius: 10px;">Select Final Answer</font></button>&nbsp;&nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-default" onclick="frmreset()" style="height:30px"></span><font style="font-size:12px;font-weight:bold"></font></button>&nbsp;&nbsp;&nbsp;&nbsp;</form><br><br>';
             } else if ($_GET["t"] > $_GET["n"] && $_GET["n"] == 1) {
                 echo '<br />&nbsp;&nbsp;&nbsp;&nbsp;<button type="submit" class="btn btn-default" disabled="true" id="sbutton" aria-hidden="true" 
                 style="font-size:16px;color: white; background-color: #0561e1; padding: 10px; border-radius: 8px; width: 100px; margin-right: 15px;"></span>Confirm</button><button type="button" class="btn btn-default" onclick="frmreset()" <i class="fa fa-window-close"></i>Reset</font></button>&nbsp;&nbsp;&nbsp;&nbsp;<a href="account.php?q=quiz&step=2&eid=' . $eid . '&n=' . ($sn + 1) . '&t=' . $total . '" class="btn btn-primary" style="height:30px"><span class="glyphicon glyphicon-arrow-right" aria-hidden="true"  style="font-size:12px"></span></a></form><br><br>';
