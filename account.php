@@ -62,12 +62,13 @@
   <main>
   <br>
   
-  <div style="width: 100%;">
+<div class="row medium-8 large-7 columns">
+    <div class="blog-post">
           
      <?php
 if (@$_GET['q'] == 1) {
-    
-    $result = mysqli_query($con, "SELECT * FROM quiz WHERE status = 'enabled' ORDER BY date DESC") or die('Error');
+    $unitNo = @$_GET['unit'];
+    $result = mysqli_query($con, "SELECT * FROM quiz WHERE status = 'enabled' AND quizUnit='$unitNo' ORDER BY date DESC") or die('Error');
     
     echo '
     <tr>
@@ -660,7 +661,8 @@ if (@$_GET['q'] == 4) {
 
 </div>
 
-  </main>
+</div></div>
+</main>
 
 
 

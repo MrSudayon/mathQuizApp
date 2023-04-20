@@ -8,8 +8,6 @@ if(mysqli_connect_errno()){
    #echo 'connected';
 }
 
-
-
 $id = $_POST["id"];
 $new_headline = $_POST["new_headline"];
 $new_context = $_POST["new_context"];

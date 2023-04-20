@@ -85,7 +85,7 @@
 
 <center>
     <?php
-
+    $unitNo = @$_GET['unit'];
    echo '<br><br>';
 
 echo '<!-- Trigger/Open The Modal -->
@@ -94,10 +94,7 @@ echo '<!-- Trigger/Open The Modal -->
     background: red;
     color:white; 
     width: 50%;
-    border-bottom-left-radius: 6px;
-    border-bottom-right-radius:6px; 
-    border-top-left-radius: 6px; 
-    border-top-right-radius: 6px;">Unit 1: Quiz Command</button>
+    border-radius: 6px;">Unit '. $unitNo .': Quiz Command</button>
     
     <!-- The Modal -->
     <div id="myModal2" class="modal">

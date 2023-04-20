@@ -69,9 +69,9 @@ if (isset($_SESSION['key'])) {
     }
 }
 
-
 if (isset($_SESSION['key'])) {
     if (@$_GET['q'] == 'addquiz' && $_SESSION['key'] == '54585c506829293a2d4c3b68543b316e2e7a2d277858545a36362e5f39') {
+
         $name    = $_POST['name'];
         $name    = ucwords(strtolower($name));
         $total   = $_POST['total'];
@@ -79,9 +79,10 @@ if (isset($_SESSION['key'])) {
         $wrong   = $_POST['wrong'];
         $time    = $_POST['time'];
         $status  = "disabled";
+        $quizUnit = @$_GET['qUnit'];
         $id      = uniqid();
-        $q3      = mysqli_query($con, "INSERT INTO quiz VALUES(NULL,'$id','$name','$correct','$wrong','$total','$time', 'NOW()','$status')");
-        header("location:dash.php?q=4&step=2&eid=$id&n=$total");
+        $q3      = mysqli_query($con, "INSERT INTO quiz VALUES(NULL,'$id','$name','$correct','$wrong','$total','$time', NOW(),'$status','$quizUnit')");
+        header("location:addQuiz.php?q=4&step=2&eid=$id&n=$total");
     }
 }
 if (isset($_SESSION['key'])) {
@@ -89,10 +90,11 @@ if (isset($_SESSION['key'])) {
         $n   = @$_GET['n'];
         $eid = @$_GET['eid'];
         $ch  = @$_GET['ch'];
+        
         for ($i = 1; $i <= $n; $i++) {
             $qid  = uniqid();
             $qns  = addslashes($_POST['qns' . $i]);
-            $q3   = mysqli_query($con, "INSERT INTO questions VALUES  (NULL,'$eid','$qid','$qns' , '$ch' , '$i')") or die();
+            $q3   = mysqli_query($con, "INSERT INTO questions VALUES  (NULL,'$eid','$qid','$qns','$ch','$i','$quizUnit')") or die();
             $oaid = uniqid();
             $obid = uniqid();
             $ocid = uniqid();
