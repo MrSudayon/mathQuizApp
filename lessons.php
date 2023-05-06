@@ -58,12 +58,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST" ){
     
     <title>Add Unit Lesson</title>
 </head>
-<body style="background-color:lightgreen;"><br>
+<body style="background-color: var(--main-color);"><br>
 
-    <CENTER>
+    <center>
         <form method="POST" action="<?php $_SERVER['PHP_SELF']; ?>">
             <p1>Title of lessons</p1><br>
-            <textarea type="text" name="headline" value="<?php echo $headline; ?>" class="texta"  required="yes" style="background-color: white; border: none; outline: 2px solid gray; border-radius: 8px; font-size: 14px;"></textarea> <br>
+            <textarea type="text" name="headline" value="<?php echo $headline; ?>" class="texta"  required="yes" style="background-color: white; color: black; border: none; outline: 2px solid gray; border-radius: 8px; font-size: 14px;"></textarea> <br>
             <span class="error"><?php echo $headlineErr; ?></span> <Br>
             <p1> Title of Context</p1><br>
             <textarea type="text" name="context" value="<?php echo $context; ?>" class="texta1"  required="yes" style="background-color: white; border: none; outline: 2px solid gray; border-radius: 8px; font-size: 14px;"></textarea> <br>
@@ -77,35 +77,31 @@ if($_SERVER["REQUEST_METHOD"] == "POST" ){
                 <?php echo $endingErr; ?></span> <Br>
 
             <input type="submit" value="Confirm" style="
-                text-align:center;  
-                background-color: #006aff; /* Green */ 
-                border: none; color: white;
-                padding: 15px 32px;
-                text-align: center;
+                background-color: var(--confirm-b);
+                border: none; 
+                color: white;
+                display: flex;
+                justify-content: center;
                 text-decoration: none;
-                display: inline-block;
-                width: 40%;
-                cursor: pointer;
+                width: 80%;
                 font-size: 16px;
                 border-radius: 10px;
-                height: 55px;
-                "> <br>
+                padding: 12px 15px;"> <br>
         </form>
-        <br>
         
 <center><a href='addlessonchoi.php' style="
-        text-align:center;  
-        background-color: #006aff; /* Green */ 
-        border: none; color: white;
-        padding: 15px 32px;
-        text-align: center;
+        background-color: var(--confirm-b);
+        border: none; 
+        color: white;
+        display: flex;
+        justify-content: center;
         text-decoration: none;
-        display: inline-block;
-        width: 40%;
+        width: 80%;
         font-size: 16px;
         border-radius: 10px;
-        height: 55px;">Disregard</a><br>
-
+        padding: 12px 15px;">Disregard</a><br>
+       
+    <!--
     <div class="notif--div" style="height: auto; width: 40%; padding: 5px;
                 border-bottom-left-radius: 10px;
                 border-bottom-right-radius: 10px;
@@ -113,10 +109,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST" ){
                 border-top-right-radius: 10px;
                 color: black;
                 margin-top: 10px;
-                margin-bottom: 10px;">
-                <br>
-   
-    </div>
+                margin-bottom: 10px;">asd
+    </div>-->
     <hr>
     <h5>Recently Added</h5>
 </center>
@@ -125,7 +119,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST" ){
 
 # View Data in Database
 $view_query = mysqli_query($con, "SELECT * FROM lesson WHERE isArchive=0");
-echo "<table border='1' style='width:80%; background-color: var(--light-color);'>";
+echo "<table border='1' style='width:80%; background-color: var(--light-main);'>";
 echo "<tr>  
     <td style='vertical-align:middle; text-align: center; width: 8%;'><b>Lesson Unit #</td>
     <td style='vertical-align:middle; text-align: center;'><b>Title</td>

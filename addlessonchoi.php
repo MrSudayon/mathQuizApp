@@ -9,36 +9,40 @@
 
 <style> 
     .button {
-        background: #148110;
-        width: 100%;
-        height: 50px;
-        padding: 10px 80px;
-        margin: 10px 0;
+        background-color: #148110;
+        border: none; color: white;
+        display: flex;
+        justify-content: center;
         text-decoration: none;
-        cursor: pointer;
+        width: 80%;
+        font-size: 16px;
         border-radius: 10px;
-        color: white;
-        -webkit-appearance: none;
+        padding: 20px;
+    }
+    .button1 {
+        background-color: #148110;
+        border: none; color: white;
+        display: flex;
+        justify-content: center;
+        text-decoration: none;
+        width: 80%;
+        font-size: 16px;
+        border-radius: 10px;
+        padding: 20px;
+        cursor: pointer;
     }
 </style>
 </head>
 <body>
 <center>
 <form method="get" action="dash.php?q=5">
-    <button type="submit" class="button" 
-                style="
-                background:var(--cancel-c);
-                width: 20%;
-                height: 50px;
-                border-bottom-left-radius: 10px;
-                cursor: pointer;
-                border-bottom-right-radius: 10px;
-                border-top-left-radius: 10px;
-                border-top-right-radius: 10px;
-                color: white;border: 0;
-                -webkit-appearance: none;">Back</button>
+<br><br>
+<button type="submit" class="button1" style="background:var(--cancel-c);">Back</button>
 </form>
-<main><center><br><br>
+<main>
+
+
+<br><br>
 <form method="get" action="lessons.php">
     <a href="lessons.php?unit=1" class="button">Add Lesson for Unit 1</a>
 </form><br><br>
@@ -57,17 +61,7 @@
 
 <form method="get"action="archives.php">
     <button type="submit" class="button" 
-                style="
-                background: #148110;
-                width: 20%;
-                height: 50px;
-                cursor: pointer;
-                border-bottom-left-radius: 10px;
-                border-bottom-right-radius: 10px;
-                border-top-left-radius: 10px;
-                border-top-right-radius: 10px;
-                color: white;border: 0;
-                -webkit-appearance: none;">Lessons Archives</button>
+style="cursor: pointer;">Lessons Archives</button>
 </form>
 
 
