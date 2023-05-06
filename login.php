@@ -37,7 +37,7 @@ echo'<br><br><br><br>';
 <main>
 <center><li><a href=""><img src="images/sorry.svg" alt="avatar" style="height: 500px; width: 500px;" ></a></li>
 <h5 style="color: #2c3e50; font-weight: bold;">Sorry, Wrong username or password.</h5>
-      <h5 style="color: #007938; font-weight: light; font-size: 14px;">Go back and login again. :) <a href="account2.php?q=1" style="color: gray"><u>Back to login<u></a></h5>
+      <h5 style="color: #007938; font-weight: light; font-size: 14px;">Go back and login again. :) <a href="index.php" style="color: gray"><u>Back to login<u></a></h5>
       </center>
 </main>
 </body>

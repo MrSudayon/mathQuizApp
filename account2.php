@@ -1,4 +1,19 @@
-<?php session_start(); ?>
+<?php
+session_start();
+if($_SESSION['name']) {
+	$name = $_SESSION['name'];
+    $username = $_SESSION['username'];
+		
+	} else {
+		header("refresh:0;url= index.php");
+		?>
+			<script>
+				alert('Login first!')
+			</script>
+		<?php
+	}
+include 'dbConnection.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,9 +30,7 @@
 
 
 </head>
-<body">
-<?php include 'dbConnection.php'; ?>
-
+<body>
 
 <div class="page">
   <header tabindex="0">Dashboard</header>
@@ -80,7 +93,6 @@
             } else {
                 $name     = $_SESSION['name'];
                 $username = $_SESSION['username'];
-                include 'dbConnection.php';
 
                 echo '
                 <br>

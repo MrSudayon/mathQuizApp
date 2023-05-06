@@ -1,9 +1,11 @@
 :root {
-    --main-color: #148110; 
+    --main-color: #169212; 
+    --light-main: #9fff9b;
     --dark-color: #11152a;
     --light-color: #d0d4ed;
     --texts-c: #5e74ff;
-    --cancel-c: #ff6e6e;
+    --cancel-c: #ff6e6e;   
+    --confirm-b: #006aff;
 }
 
 p {
@@ -11,4 +13,10 @@ p {
     font-weight: 100;
     font-style: italic;
     font-size: 15px;
+}
+
+p1 {
+    color: white;
+    font-size: 20px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
