@@ -1,4 +1,7 @@
-<?php session_start(); ?>
+<?php 
+session_start(); 
+include 'dbConnection.php';
+?>
 
 <!DOCTYPE html PUBLIC>
 <html>
@@ -7,35 +10,30 @@
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css">
-<title>Admin</title>
-<script src="js/jquery.js" type="text/javascript"></script>
-<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-<script src="js/bootstrap.min.js"  type="text/javascript"></script>
-<link rel="preconnect" href="https://fonts.gstatic.com">
+<title>Edit Quiz</title>
+ <script src="js/jquery.js" type="text/javascript"></script>
+ <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <script src="js/bootstrap.min.js"  type="text/javascript"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
 
 
 </head>
-<body><center>
-
-
-
-    <!-- Start Top Bar -->
+<body>
+<center><!-- Start Top Bar -->
     <div class="top-bar" style="background-color: #148110; border-bottom: 5px solid #148110;" >
       <div class="top-bar-left">
         <ul class="menu"  style="background-color: #148110">
           <li class="menu-text" style="color:white;">
           
             <?php
-                include 'dbConnection.php';
+                
                 if (!(isset($_SESSION['username']))  || ($_SESSION['key']) != '54585c506829293a2d4c3b68543b316e2e7a2d277858545a36362e5f39') {
                     session_destroy();
                     header("location:index.php");
                 } else {
                     $name     = $_SESSION['name'];
                     $username = $_SESSION['username'];
-                    
-                    include_once 'dbConnection.php';
                     echo '<img src="images/school.png" width="56" height="56">';
                 }
             ?></li>
@@ -83,44 +81,44 @@
     </div>
 
     <br>
-
-    <!-- End Top Bar -->
-
-<div class="container">
-<div class="row"><div class="col-md-12">
 <?php
-    echo '<table class="table table-striped title"  style="vertical-align:middle; width: 100%; border: 1px solid black;">
-    <div class="panel">
-    <tr>
-        <th style="vertical-align:middle; color: #000;"><b>Lesson Unit #</b></th>
-        <th style="vertical-align:middle; color: #000;"><b>Headline</b></th>
-        <th style="vertical-align:middle; color: #000;"><b>Ending</b></th>
-        <th style="vertical-align:middle; color: #000;"><b>Action</b></th>
-    </tr>';
-    
-        $archiveTable = mysqli_query($con, "SELECT * FROM lesson WHERE isArchive=1");
-        while($row = mysqli_fetch_array($archiveTable)) {
-            $lId = $row['id'];
-            $id = $row['lessonType'];
-            $headline = $row['headline'];
-            $ending = $row['ending'];
-            
-            echo '<tr>
-                <td style="vertical-align:middle; text-align: center; color: #000;"><b>'. $id .'</b></td>
-                <td style="vertical-align:middle; text-align: center; color: #000;">'. $headline .'</td>
-                <td style="vertical-align:middle; text-align: center; color: #000;">'. $ending .'</td>
-                <td style="vertical-align:middle; text-align: center; color: green;">
-                    <a href="recover.php?lid='.$lId.'">Recover</a>
-                </td>
-           </tr>
-        </div>';
-            
-    
-        }
-    ?>
-</table>
-</div>
-</div></div>
+
+$quizU = @$_GET['qU'];
+$id = @$_GET['eid'];
+$n = @$_GET['n'];
+
+$sql = mysqli_query($con, "SELECT * FROM quiz WHERE eid='$id' AND status='enabled'");
+if(!$sql) {
+   die('Error: ' . mysqli_error($con));
+}
+while($row=mysqli_fetch_assoc($sql)) {
+    $id = $row['eid'];
+    $title = $row['title'];
+    $remarks = $row['correct'];
+    $time = $row['time'];
+    $quizunit = $row['quizUnit'];
+}
+?>
+<form method="POST" action="editQ.php">
+<center>
+<input type="hidden" name="id" value="<?php echo $id; ?>">  
+<label for="title">Title</label>
+<input type="text" name="title" class="texta1" rows="10" cols="90" style="width: 70%;" value="<?php echo $title; ?>"><BR><BR>
+<label for="remarks">Remarks (score if correct)</label>
+<input type="text" name="remarks" class="texta1" rows="10" cols="90" style="width: 70%;" value="<?php echo $remarks; ?>"><BR><BR>
+<label for="time">Time</label>
+<input type="text" name="time" class="texta1" rows="10" cols="90" style="width: 70%;" value="<?php echo $time; ?>"><BR><BR>
+<label for="quizunit">Quiz Unit</label>
+<input type="text" name="quizunit" class="texta1" rows="10" cols="90" style="width: 70%;" value="<?php echo $quizunit; ?>"><BR><BR>
+
+<input type="submit" value="Update" style="border:6px solid #A2D2FF;
+text-align: center;
+background-color: #125C13; 
+border: none; color: white;
+padding: 15px 32px;
+text-decoration: none;
+font-size: 16px;
+width: 70%;
+cursor: pointer;
+border-radius: 10px;"> <br>
 </center>
-</body>
-</html>

@@ -278,7 +278,7 @@ if (@$_GET['q'] == 'quiz' && @$_GET['step'] == 2 && isset($_SESSION['6e447159425
                         $q = mysqli_query($con, "UPDATE `rank` SET `score`=$sun ,time=NOW() WHERE username= '$username'") or die('Error174');
                     }
                 }
-            header('location:account.php?q=result&eid=' . $_GET['eid']);
+        header('location:account.php?q=result&eid=' . $_GET['eid']);
     }
 }
 

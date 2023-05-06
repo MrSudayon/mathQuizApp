@@ -1,4 +1,19 @@
-<?php session_start(); ?>
+<?php 
+session_start();
+if($_SESSION['name']) {
+	$name = $_SESSION['name'];
+    $username = $_SESSION['username'];
+		
+	} else {
+		header("refresh:0;url= index.php");
+		?>
+			<script>
+				alert('Login first!')
+			</script>
+		<?php
+	}
+include 'dbConnection.php';
+?>
 
 <!DOCTYPE html PUBLIC>
 <html>
@@ -92,25 +107,31 @@
     echo '<table class="table table-striped title"  style="vertical-align:middle; width: 100%; border: 1px solid black;">
     <div class="panel">
     <tr>
-        <th style="vertical-align:middle; color: #000;"><b>Lesson Unit #</b></th>
-        <th style="vertical-align:middle; color: #000;"><b>Headline</b></th>
-        <th style="vertical-align:middle; color: #000;"><b>Ending</b></th>
+        <th style="vertical-align:middle; color: #000;"><b>Quiz Unit #</b></th>
+        <th style="vertical-align:middle; color: #000;"><b>Title</b></th>
+        <th style="vertical-align:middle; color: #000;"><b>Remarks</b></th>
+        <th style="vertical-align:middle; color: #000;"><b>Time Duration</b></th>
+        <th style="vertical-align:middle; color: #000;"><b>Date Created</b></th>
         <th style="vertical-align:middle; color: #000;"><b>Action</b></th>
     </tr>';
     
-        $archiveTable = mysqli_query($con, "SELECT * FROM lesson WHERE isArchive=1");
+        $archiveTable = mysqli_query($con, "SELECT * FROM quiz WHERE status='archive'");
         while($row = mysqli_fetch_array($archiveTable)) {
-            $lId = $row['id'];
-            $id = $row['lessonType'];
-            $headline = $row['headline'];
-            $ending = $row['ending'];
+            $QId = $row['id'];
+            $qUnit = $row['quizUnit'];
+            $title = $row['title'];
+            $correct = $row['correct'];
+            $time = $row['time'];
+            $date = $row['date'];
             
             echo '<tr>
-                <td style="vertical-align:middle; text-align: center; color: #000;"><b>'. $id .'</b></td>
-                <td style="vertical-align:middle; text-align: center; color: #000;">'. $headline .'</td>
-                <td style="vertical-align:middle; text-align: center; color: #000;">'. $ending .'</td>
+                <td style="vertical-align:middle; text-align: center; color: #000;"><b>'. $qUnit .'</b></td>
+                <td style="vertical-align:middle; text-align: center; color: #000;">'. $title .'</td>
+                <td style="vertical-align:middle; text-align: center; color: #000;">'. $correct .'</td>
+                <td style="vertical-align:middle; text-align: center; color: #000;">'. $time .'</td>
+                <td style="vertical-align:middle; text-align: center; color: #000;">'. $date .'</td>
                 <td style="vertical-align:middle; text-align: center; color: green;">
-                    <a href="recover.php?lid='.$lId.'">Recover</a>
+                    <a href="recover.php?recoverType=quiz&Qid='.$QId.'">Recover</a>
                 </td>
            </tr>
         </div>';

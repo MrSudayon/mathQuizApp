@@ -1,4 +1,5 @@
 <?php
+session_start();
 include 'dbConnection.php';
 ?>
 <!DOCTYPE html>
@@ -7,8 +8,8 @@ include 'dbConnection.php';
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-
+    <title>Quizzes</title>
+    <link rel="stylesheet" href="font.css">
     <script src="js/jquery.js" type="text/javascript"></script>
  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
   <script src="js/bootstrap.min.js"  type="text/javascript"></script>
@@ -21,11 +22,10 @@ include 'dbConnection.php';
 <body>
 <?php 
 
-echo '<a href="dash.php?q=5" style="color: green;">Back</a>';
-
 $QUnit = @$_GET['unit'];
 
-    $result = mysqli_query($con, "SELECT * FROM quiz WHERE quizUnit='$QUnit' ORDER BY date DESC") or die('Error');
+    $result = mysqli_query($con, "SELECT * FROM quiz WHERE quizUnit='$QUnit' AND status='enabled' ORDER BY date DESC") or die('<br>0 Result');
+    echo '<a href="dash.php?q=5" style="color: green;">Back</a>';
     echo '<br><div class="panel">
     <table class="" style"width: 100%;";>
     <tr>
@@ -34,7 +34,7 @@ $QUnit = @$_GET['unit'];
     <td style="vertical-align:middle"><b>Total question</b></td>
     <td style="vertical-align:middle"><b>Marks</b></td>
     <td style="vertical-align:middle"><b>Time limit</b></td>
-    <td style="vertical-align:middle"><b>Action</b></td></tr>';
+    <td style="vertical-align:middle; text-align: center;" colspan=3><b>Action</b></td></tr>';
     
 
     echo '<br><p style="
@@ -63,6 +63,28 @@ $QUnit = @$_GET['unit'];
         <td style="vertical-align:middle">' . $time . '&nbsp;min</td>
         <td style="vertical-align:middle">
 
+        <a href="editQuiz.php?qU='.$QUnit.'&eid=' . $eid . '" class="btn" 
+        style="
+        padding:5px;
+        background: var(--light-main);
+        color:white; 
+        border-bottom-left-radius: 6px;
+        border-bottom-right-radius:6px; 
+        border-top-left-radius: 6px; 
+        border-top-right-radius: 6px;">Edit</span>
+        </a>&nbsp;
+         
+        <a href="archiveQuiz.php?qU='.$QUnit.'&eid=' . $eid . '" class="btn" 
+        style="
+        padding:5px;
+        background: var(--cancel-c);
+        color:white; 
+        border-bottom-left-radius: 6px;
+        border-bottom-right-radius:6px; 
+        border-top-left-radius: 6px; 
+        border-top-right-radius: 6px;">Archive</span>
+        </a>&nbsp;
+        
         <a href="update.php?q=rmquiz&eid=' . $eid . '" class="btn" 
         style="
         padding:5px;

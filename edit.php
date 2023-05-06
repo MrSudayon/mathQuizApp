@@ -1,16 +1,9 @@
 <?php
-// $con= new mysqli('localhost','root','','quiz')or die("Could not connect to mysql".mysqli_error($con));
-
-$connections = mysqli_connect("mysql.hostinger.ph", "u972052303_olasoivan82342", "Hd4e*ne@M9]u", "u972052303_quiz");
-if(mysqli_connect_errno()){
-    echo "Failed to connect to my MySQL: " . mysqli_connect_error();
-}else{
-   #echo 'connected';
-}
+include 'dbConnection.php';
 
 
 $id = isset($_REQUEST['id']) ? $_REQUEST['id'] : '';
-$get_record = mysqli_query($connections, "SELECT * FROM lesson WHERE id='$id' ");
+$get_record = mysqli_query($con, "SELECT * FROM lesson WHERE id='$id' AND isArchive=0");
 
 while($row_edit = mysqli_fetch_assoc($get_record)){
 
@@ -24,25 +17,23 @@ while($row_edit = mysqli_fetch_assoc($get_record)){
 ?>
 
 <form method="POST" action="update1.php">
-
+<center>
 <input type="hidden" name="id" value="<?php echo $id; ?>">  
-<textarea type="text" name="new_headline" class="texta1" rows="10" cols="90" style="width: 100%;"><?php echo $headline; ?></textarea><BR><BR>
-<textarea type="text" name="new_context" class="texta1" rows="10" cols="90" style="width: 100%;"><?php echo $context; ?></textarea><BR><BR>
-<textarea type="text" name="new_content" class="texta1" rows="10" cols="90" style="width: 100%;"><?php echo $content; ?></textarea><BR><BR>
-<textarea type="text" name="new_ending" class="texta1" rows="10" cols="90" style="width: 100%;"><?php echo $ending; ?></textarea><BR><BR>
-<input type="submit"  value="Continue" style=" border:6px solid #A2D2FF;
-                text-align:center;  
-                background-color: #125C13; 
-                border: none; color: white;float: right;
-                padding: 15px 32px;
+<textarea type="text" name="new_headline" class="texta1" rows="10" cols="90" style="width: 70%;"><?php echo $headline; ?></textarea><BR><BR>
+<textarea type="text" name="new_context" class="texta1" rows="10" cols="90" style="width: 70%;"><?php echo $context; ?></textarea><BR><BR>
+<textarea type="text" name="new_content" class="texta1" rows="10" cols="90" style="width: 70%;"><?php echo $content; ?></textarea><BR><BR>
+<textarea type="text" name="new_ending" class="texta1" rows="10" cols="90" style="width: 70%;"><?php echo $ending; ?></textarea><BR><BR>
+<input type="submit"  value="Continue" style="border:6px solid #A2D2FF;
                 text-align: center;
+                background-color: #125C13; 
+                border: none; color: white;
+                padding: 15px 32px;
                 text-decoration: none;
                 font-size: 16px;
-                width: 100%;
-                border-bottom-left-radius: 10px;
-                border-bottom-right-radius: 10px;
-                border-top-left-radius: 10px;
-                border-top-right-radius: 10px;""> <br>
+                width: 70%;
+                cursor: pointer;
+                border-radius: 10px;"> <br>
+                </center>
 </form>
 
 <style>
